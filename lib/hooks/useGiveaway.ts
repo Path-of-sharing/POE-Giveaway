@@ -90,6 +90,30 @@ export function useGiveaway(slug?: string) {
     return true;
   };
 
+  // Select a specific winner
+  const selectWinner = async (winnerId: string): Promise<boolean> => {
+    if (!giveaway) return false;
+
+    setLoading(true);
+    setError(null);
+
+    // Update the giveaway with the winner
+    const { error: updateError } = await supabase
+      .from("giveaways")
+      .update({ winner_id: winnerId, status: "drawn" })
+      .eq("id", giveaway.id);
+
+    if (updateError) {
+      setError(updateError.message);
+      setLoading(false);
+      return false;
+    }
+
+    setGiveaway({ ...giveaway, winner_id: winnerId, status: "drawn" });
+    setLoading(false);
+    return true;
+  };
+
   // Draw a winner randomly
   const drawWinner = async (): Promise<string | null> => {
     if (!giveaway) return null;
@@ -142,6 +166,7 @@ export function useGiveaway(slug?: string) {
     fetchGiveaway,
     createGiveaway,
     updateStatus,
+    selectWinner,
     drawWinner,
   };
 }

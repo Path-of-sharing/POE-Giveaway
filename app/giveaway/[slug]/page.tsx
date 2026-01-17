@@ -15,7 +15,7 @@ export default function GiveawayPage() {
   const router = useRouter();
   const slug = params.slug as string;
 
-  const { giveaway, loading: giveawayLoading, error: giveawayError } = useGiveaway(slug);
+  const { giveaway, loading: giveawayLoading, error: giveawayError, selectWinner } = useGiveaway(slug);
   const { entries, loading: entriesLoading, addEntry, entryCount, subscribeToEntries } = useEntries(
     giveaway?.id
   );
@@ -54,6 +54,15 @@ export default function GiveawayPage() {
     if (!participantName.trim()) {
       setSubmitError("Please enter your POE name");
       return;
+    }
+
+    // Validate Reddit profile link if provided
+    if (redditProfileLink.trim()) {
+      const redditUrlPattern = /^https?:\/\/(www\.)?(reddit\.com|old\.reddit\.com)\/(u|user)\/[\w-]+\/?$/i;
+      if (!redditUrlPattern.test(redditProfileLink.trim())) {
+        setSubmitError("Please enter a valid Reddit profile URL (e.g., https://reddit.com/u/username)");
+        return;
+      }
     }
 
     setIsSubmitting(true);
@@ -99,6 +108,24 @@ export default function GiveawayPage() {
   const handleClosePasswordModal = () => {
     setShowPasswordModal(false);
     setPasswordError("");
+  };
+
+  const handleSelectWinner = async (participant: { id: string; participant_name: string }) => {
+    if (!giveaway) return;
+
+    const confirmed = window.confirm(
+      `Are you sure you want to select ${participant.participant_name} as the winner? This will close the giveaway.`
+    );
+
+    if (!confirmed) return;
+
+    const success = await selectWinner(participant.id);
+
+    if (success) {
+      alert(`${participant.participant_name} has been selected as the winner! 🎉`);
+    } else {
+      alert("Failed to select winner. Please try again.");
+    }
   };
 
   // Find the currency image
@@ -318,10 +345,7 @@ export default function GiveawayPage() {
             <GiveawaySelector
               participants={entries}
               winnerId={giveaway.winner_id}
-              onSelectWinner={(participant) => {
-                // TODO: Implement winner selection logic
-                console.log("Selected winner:", participant);
-              }}
+              onSelectWinner={handleSelectWinner}
             />
           </div>
         ) : (

@@ -1,0 +1,40 @@
+{
+    "comingSoon": [
+        {
+            "id": 6,
+            "title": "Support for items and uniques",
+            "description": "Add items lists and support for unique items in giveaways.",
+            "expectedReleaseDate": "tbd"
+        },
+        {
+            "id": 2,
+            "title": "POE 1 support",
+            "description": "add support for POE 1 items and currencies.",
+            "expectedReleaseDate": "tbd"
+        },
+        {
+            "id": 3,
+            "title": "User profiles",
+            "description": "Create user profiles to track your giveaways and entries.This is a bit more complex cause its gotta deal with profile managment and authentication, if it gets bogger maybe but right now , simple the better",
+            "expectedReleaseDate": "probably not anytime soon"
+        },
+        {
+            "id": 4,
+            "title": "Giveaway comments",
+            "description": "Allow users to comment on giveaways to ask questions or provide feedback.",
+            "expectedReleaseDate": "tbd"
+        },
+        {
+            "id": 5,
+            "title": "Email notifications",
+            "description": "Notify users via email when they win a giveaway or when a giveaway they entered is about to end.",
+            "expectedReleaseDate": "tbd"
+        },
+        {
+            "id": 1,
+            "title": "Clan and guild recruitment",
+            "description": "Add features to help clans and guilds recruit new members. something simple that adds a person to contact and some discord stuff ",
+            "expectedReleaseDate": "tbd"
+        }
+    ]
+}

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import ActiveGiveawayCard from "@/components/active-giveaway-card";
 import type { Giveaway } from "@/lib/types/database";
+import comingSoonData from "@/data/coming-soon.json";
 
 export default function Home() {
   const [giveaways, setGiveaways] = useState<Giveaway[]>([]);
@@ -20,7 +21,6 @@ export default function Home() {
       const { data, error: fetchError } = await supabase
         .from("giveaways")
         .select("*")
-        .eq("status", "active")
         .order("created_at", { ascending: false });
 
       if (fetchError) {
@@ -38,14 +38,16 @@ export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex min-h-screen w-full max-w-4xl flex-col gap-8 py-16 px-8 bg-white dark:bg-black">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-6">
           <div className="flex items-start justify-between gap-4">
-            <div>
+            <div className="flex-1">
               <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">
-                POE Giveaway
+                Path of Sharing
               </h1>
               <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-                Create and join Path of Exile currency giveaways
+               Path of Sharing is a small, community-driven app for Path of Exile 2 players. Create giveaways, join paths created by others, and share the excitement of loot — built as a fun hobby project by a single dev.
+
+Is it perfect? Absolutely not. Does it work? Most of the time. Will there be bugs? hell yeah.
               </p>
             </div>
             <Link
@@ -55,12 +57,58 @@ export default function Home() {
               Create Giveaway
             </Link>
           </div>
+
+          {/* Memeish Intro Section */}
+          
         </div>
 
-        {/* Active Giveaways Section */}
+        {/* Coming Soon Preview Section */}
+        <div className="rounded-lg border border-blue-200 bg-gradient-to-br from-blue-50 to-purple-50 p-6 dark:border-blue-800 dark:from-blue-950/30 dark:to-purple-950/30">
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-2">
+                <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+                  What's Coming Next
+                </h2>
+                <span className="rounded-full bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-800 dark:bg-blue-900/50 dark:text-blue-400">
+                  {comingSoonData.comingSoon.length} features
+                </span>
+              </div>
+              <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
+                We're constantly working on new features to improve your giveaway experience
+              </p>
+
+              {/* Preview of first 3 features */}
+              <div className="flex flex-col gap-2 mb-4">
+                {comingSoonData.comingSoon.slice(0, 3).map((feature) => (
+                  <div key={feature.id} className="flex items-start gap-2">
+                    <svg className="h-5 w-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                      {feature.title}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <Link
+                href="/coming-soon"
+                className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+              >
+                View all upcoming features
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* All Giveaways Section */}
         <div className="flex flex-col gap-4">
           <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-            Active Giveaways
+            All Giveaways
           </h2>
 
           {loading ? (
@@ -74,7 +122,7 @@ export default function Home() {
           ) : giveaways.length === 0 ? (
             <div className="flex flex-col items-center justify-center gap-4 rounded-lg border border-zinc-200 bg-zinc-50 p-12 dark:border-zinc-800 dark:bg-zinc-900">
               <p className="text-center text-zinc-600 dark:text-zinc-400">
-                No active giveaways at the moment.
+                No giveaways at the moment.
               </p>
               <Link
                 href="/create-giveaway"
