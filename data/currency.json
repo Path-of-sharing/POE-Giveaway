@@ -1,0 +1,15 @@
+{
+    "currency": [
+        {"name":"divineOrb","picture":"/data/img/divineOrb.webp"},
+        {"name":"exaltedOrb","picture":"/data/img/exaltedOrb.webp"},
+        {"name":"chaosOrb","picture":"/data/img/chaosOrb.webp"},
+        {"name":"mirrorOfKalandra","picture":"/data/img/mirror.webp"},
+        {"name":"orbOfAlchemy","picture":"/data/img/orbOfAlchemy.webp"},
+        {"name":"orbOfAugmentation","picture":"/data/img/orbOfAug.webp"},
+        {"name":"orbOfChance","picture":"/data/img/orbOfChance.webp"},
+        {"name":"orbOfTransmutation","picture":"/data/img/orbOfTrans.webp"},
+        {"name":"regalOrb","picture":"/data/img/orbOfRegal.webp"},
+        {"name":"vaalOrb","picture":"/data/img/orbOfVaal.webp"},
+        {"name":"annulmentOrb","picture":"/data/img/OrbOfAnnulment.webp"}
+    ]
+}
