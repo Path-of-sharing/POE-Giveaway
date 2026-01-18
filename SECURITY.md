@@ -21,7 +21,7 @@ We take the security of POE Giveaway seriously. If you believe you have found a 
 
 ### Please DO:
 
-1. **Email us privately** or **open a private security advisory** on GitHub at https://github.com/EMedina24/poe-giveaway/security/advisories with:
+1. **Email us privately** or **open a private security advisory** on GitHub at https://github.com/Path-of-sharing/POE-Giveaway/security/advisories with:
    - A description of the vulnerability
    - Steps to reproduce the issue
    - Potential impact of the vulnerability
@@ -126,9 +126,9 @@ We appreciate the security research community's efforts in responsible disclosur
 
 ## Contact
 
-For security issues: [GitHub Security Advisories](https://github.com/EMedina24/poe-giveaway/security/advisories)
+For security issues: [GitHub Security Advisories](https://github.com/Path-of-sharing/POE-Giveaway/security/advisories)
 
-For general questions: [GitHub Issues](https://github.com/EMedina24/poe-giveaway/issues)
+For general questions: [GitHub Issues](https://github.com/Path-of-sharing/POE-Giveaway/issues)
 
 ## Recognition
 

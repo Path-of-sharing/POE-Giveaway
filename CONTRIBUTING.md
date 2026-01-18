@@ -71,8 +71,8 @@ We actively welcome your pull requests! Here's how to contribute code:
 
 1. **Fork and clone the repository**
    ```bash
-   git clone https://github.com/your-username/poe-giveaway.git
-   cd poe-giveaway
+   git clone https://github.com/your-username/POE-Giveaway.git
+   cd POE-Giveaway
    ```
 
 2. **Install dependencies**
@@ -242,12 +242,12 @@ To contribute tests:
 
 ## 🐛 Known Issues
 
-Check the [Issues](https://github.com/EMedina24/poe-giveaway/issues) page for known bugs and feature requests.
+Check the [Issues](https://github.com/Path-of-sharing/POE-Giveaway/issues) page for known bugs and feature requests.
 
 ## ❓ Questions?
 
-- Open a [Discussion](https://github.com/EMedina24/poe-giveaway/discussions) for general questions
-- Check existing [Issues](https://github.com/EMedina24/poe-giveaway/issues) first
+- Open a [Discussion](https://github.com/Path-of-sharing/POE-Giveaway/discussions) for general questions
+- Check existing [Issues](https://github.com/Path-of-sharing/POE-Giveaway/issues) first
 - Reach out to maintainers if needed
 
 ## 🙏 Recognition

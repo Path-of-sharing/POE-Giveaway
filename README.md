@@ -39,8 +39,8 @@ Before you begin, ensure you have the following installed:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/EMedina24/poe-giveaway.git
-   cd poe-giveaway
+   git clone https://github.com/Path-of-sharing/POE-Giveaway.git
+   cd POE-Giveaway
    ```
 
 2. **Install dependencies**

@@ -6,12 +6,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/EMedina24/poe-giveaway.git"
+    "url": "https://github.com/Path-of-sharing/POE-Giveaway.git"
   },
   "bugs": {
-    "url": "https://github.com/EMedina24/poe-giveaway/issues"
+    "url": "https://github.com/Path-of-sharing/POE-Giveaway/issues"
   },
-  "homepage": "https://github.com/EMedina24/poe-giveaway#readme",
+  "homepage": "https://github.com/Path-of-sharing/POE-Giveaway#readme",
   "keywords": [
     "path-of-exile",
     "poe",
