@@ -149,10 +149,6 @@ export default function GiveawayPage() {
     }
   };
 
-  const currencyImage = giveaway
-    ? currencyData.currency.find((c) => c.name === giveaway.currency)?.picture
-    : null;
-
   if (giveawayLoading) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-zinc-50 dark:bg-black">
@@ -196,18 +192,6 @@ export default function GiveawayPage() {
           </button>
 
           <div className="flex items-start gap-4">
-            {currencyImage && (
-              <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg border border-zinc-200 bg-white p-2 dark:border-zinc-800 dark:bg-zinc-900">
-                <Image
-                  src={currencyImage}
-                  alt={giveaway.currency}
-                  fill
-                  className="object-contain"
-                  sizes="80px"
-                />
-              </div>
-            )}
-
             <div className="flex-1">
               <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">
                 {giveaway.title}

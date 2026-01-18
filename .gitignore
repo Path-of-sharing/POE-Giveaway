@@ -36,9 +36,7 @@ lerna-debug.log*
 .env.production.local
 
 # Supabase
-supabase/.temp
-supabase/.branches
-supabase/.git
+supabase/
 
 # IDE
 .vscode/*

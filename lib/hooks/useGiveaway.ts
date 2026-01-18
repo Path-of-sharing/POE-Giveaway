@@ -48,7 +48,7 @@ export function useGiveaway(slug?: string) {
 
     const newSlug = generateSlug();
 
-    const { data: newGiveaway, error: createError } = await supabase
+    const { data: newGiveaway, error: createError } = await (supabase as any)
       .from("giveaways")
       .insert({ ...data, slug: newSlug })
       .select()
@@ -74,9 +74,10 @@ export function useGiveaway(slug?: string) {
     setLoading(true);
     setError(null);
 
-    const { error: updateError } = await supabase
+    const updateData: any = { status };
+    const { error: updateError } = await (supabase as any)
       .from("giveaways")
-      .update({ status })
+      .update(updateData)
       .eq("id", giveaway.id);
 
     if (updateError) {
@@ -98,9 +99,10 @@ export function useGiveaway(slug?: string) {
     setError(null);
 
     // Update the giveaway with the winner
-    const { error: updateError } = await supabase
+    const updateData: any = { winner_id: winnerId, status: "drawn" };
+    const { error: updateError } = await (supabase as any)
       .from("giveaways")
-      .update({ winner_id: winnerId, status: "drawn" })
+      .update(updateData)
       .eq("id", giveaway.id);
 
     if (updateError) {
@@ -122,7 +124,7 @@ export function useGiveaway(slug?: string) {
     setError(null);
 
     // Get all entries for this giveaway
-    const { data: entries, error: entriesError } = await supabase
+    const { data: entries, error: entriesError } = await (supabase as any)
       .from("entries")
       .select("*")
       .eq("giveaway_id", giveaway.id);
@@ -137,9 +139,10 @@ export function useGiveaway(slug?: string) {
     const winner = entries[Math.floor(Math.random() * entries.length)];
 
     // Update the giveaway with the winner
-    const { error: updateError } = await supabase
+    const updateData: any = { winner_id: winner.id, status: "drawn" };
+    const { error: updateError } = await (supabase as any)
       .from("giveaways")
-      .update({ winner_id: winner.id, status: "drawn" })
+      .update(updateData)
       .eq("id", giveaway.id);
 
     if (updateError) {
