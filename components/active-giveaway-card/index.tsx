@@ -1,8 +1,10 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Giveaway } from "@/lib/types/database";
+import { createClient } from "@/lib/supabase/client";
 import currencyData from "@/data/currency.json";
 import { columnToCurrencyMap, type CurrencyColumnName } from "@/lib/utils/currencyMapper";
 
@@ -11,6 +13,21 @@ interface ActiveGiveawayCardProps {
 }
 
 export default function ActiveGiveawayCard({ giveaway }: ActiveGiveawayCardProps) {
+  const [entryCount, setEntryCount] = useState<number>(0);
+
+  useEffect(() => {
+    const fetchEntryCount = async () => {
+      const supabase = createClient();
+      const { count } = await (supabase as any)
+        .from("entries")
+        .select("*", { count: "exact", head: true })
+        .eq("giveaway_id", giveaway.id);
+
+      setEntryCount(count || 0);
+    };
+
+    fetchEntryCount();
+  }, [giveaway.id]);
   // Get all currencies with quantities > 0
   const activeCurrencies = Object.entries(giveaway)
     .filter(([key, value]) => {
@@ -88,10 +105,30 @@ export default function ActiveGiveawayCard({ giveaway }: ActiveGiveawayCardProps
             )}
           </div>
 
-          {/* Date */}
-          <p className="text-xs text-zinc-500 dark:text-zinc-500">
-            Created {new Date(giveaway.created_at).toLocaleDateString()}
-          </p>
+          {/* Date and Participants */}
+          <div className="flex items-center gap-4">
+            <p className="text-xs text-zinc-500 dark:text-zinc-500">
+              Created {new Date(giveaway.created_at).toLocaleDateString()}
+            </p>
+            <div className="flex items-center gap-1 text-xs text-zinc-600 dark:text-zinc-400">
+              <svg
+                className="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                />
+              </svg>
+              <span>
+                {entryCount} {entryCount === 1 ? "participant" : "participants"}
+              </span>
+            </div>
+          </div>
         </div>
 
         {/* Right Side - Logo */}

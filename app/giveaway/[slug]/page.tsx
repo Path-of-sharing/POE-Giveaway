@@ -228,11 +228,12 @@ export default function GiveawayPage() {
 
             {/* Manage Giveaway Button */}
             {!hasPassword && (
-              <Button
-                text="Manage Giveaway"
+              <button
                 onClick={handleOpenPasswordModal}
-                buttonStyle="gold"
-              />
+                className="rounded-lg bg-zinc-900 px-6 py-3 font-semibold text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
+              >
+                Manage Giveaway
+              </button>
             )}
 
             {hasPassword && (
@@ -427,11 +428,19 @@ export default function GiveawayPage() {
             <h2 className="mb-6 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
               Select Winner ({entryCount} {entryCount === 1 ? "Participant" : "Participants"})
             </h2>
-            <GiveawaySelector
-              participants={entries}
-              winnerId={giveaway.winner_id}
-              onSelectWinner={handleSelectWinner}
-            />
+            {entryCount === 0 ? (
+              <div className="rounded-lg border border-blue-200 bg-blue-50 p-4 dark:border-blue-800 dark:bg-blue-900/20">
+                <p className="text-sm text-blue-800 dark:text-blue-400">
+                  No participants yet. Once participants join the giveaway, the winner selection option will appear here.
+                </p>
+              </div>
+            ) : (
+              <GiveawaySelector
+                participants={entries}
+                winnerId={giveaway.winner_id}
+                onSelectWinner={handleSelectWinner}
+              />
+            )}
           </div>
         ) : (
           /* Regular Participants List for Non-Owners */
