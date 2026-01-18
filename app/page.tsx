@@ -59,8 +59,7 @@ export default function Home() {
               <p className="mt-2 text-zinc-600 dark:text-zinc-400">
                 Path of Sharing is a small, community-driven app for Path of
                 Exile players. Create giveaways and share the loot. Built as a
-                fun hobby project. Is it perfect? Absolutely not. Will there be
-                bugs? hell yeah.
+                fun hobby project. Enjoy!
               </p>
             </div>
             <Link

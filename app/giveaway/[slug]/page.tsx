@@ -10,6 +10,7 @@ import { getGiveawayPassword, setGiveawayPassword } from "@/lib/utils/cookies";
 import PasswordEntryModal from "@/components/password-entry-modal";
 import GiveawaySelector from "@/components/giveaway-selector";
 import Button from "@/components/button";
+import EntryConfirmationModal from "@/components/entry-confirmation-modal";
 
 export default function GiveawayPage() {
   const params = useParams();
@@ -27,6 +28,9 @@ export default function GiveawayPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [showPepo, setShowPepo] = useState(false);
+
+  // Confirmation modal
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
   // Password management
   const [hasPassword, setHasPassword] = useState(false);
@@ -79,6 +83,12 @@ export default function GiveawayPage() {
       }
     }
 
+    // Show confirmation modal instead of submitting immediately
+    setShowConfirmationModal(true);
+  };
+
+  const handleConfirmEntry = async () => {
+    setShowConfirmationModal(false);
     setIsSubmitting(true);
 
     const entry = await addEntry(
@@ -101,6 +111,10 @@ export default function GiveawayPage() {
     }
 
     setIsSubmitting(false);
+  };
+
+  const handleCancelEntry = () => {
+    setShowConfirmationModal(false);
   };
 
   const handleVerifyPassword = (enteredPassword: string) => {
@@ -514,6 +528,17 @@ export default function GiveawayPage() {
           onVerify={handleVerifyPassword}
           onClose={handleClosePasswordModal}
           error={passwordError}
+        />
+      )}
+
+      {/* Entry Confirmation Modal */}
+      {showConfirmationModal && (
+        <EntryConfirmationModal
+          participantName={participantName}
+          redditName={redditName || undefined}
+          redditProfileLink={redditProfileLink || undefined}
+          onConfirm={handleConfirmEntry}
+          onCancel={handleCancelEntry}
         />
       )}
 

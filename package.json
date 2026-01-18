@@ -1,7 +1,32 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
-  "private": true,
+  "name": "poe-giveaway",
+  "version": "1.0.0",
+  "description": "A modern, full-featured giveaway platform built for the Path of Exile community with anti-cheat measures and real-time updates",
+  "author": "POE Giveaway Contributors",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/poe-giveaway.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/poe-giveaway/issues"
+  },
+  "homepage": "https://github.com/yourusername/poe-giveaway#readme",
+  "keywords": [
+    "path-of-exile",
+    "poe",
+    "giveaway",
+    "raffle",
+    "gaming",
+    "nextjs",
+    "supabase",
+    "typescript",
+    "tailwindcss",
+    "real-time",
+    "currency",
+    "gaming-community"
+  ],
+  "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -27,5 +52,9 @@
     "eslint-config-next": "16.1.3",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
   }
 }
