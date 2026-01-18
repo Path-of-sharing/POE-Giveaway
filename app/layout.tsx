@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -57,7 +58,8 @@ const cinzelDecorative = localFont({
 
 export const metadata: Metadata = {
   title: "Path of Sharing",
-  description: "A community-driven giveaway platform for Path of Exile players. Create giveaways and share the loot.",
+  description:
+    "A community-driven giveaway platform for Path of Exile players. Create giveaways and share the loot.",
 };
 
 export default function RootLayout({
@@ -71,6 +73,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable} ${cinzelDecorative.variable} antialiased`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
