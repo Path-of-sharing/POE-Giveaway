@@ -1,7 +1,7 @@
 {
     "currency": [
-        {"name":"divineOrb","picture":"/data/img/divineOrb.webp"},
-        {"name":"exaltedOrb","picture":"/data/img/exaltedOrb.webp"},
+        {"name":"divineOrb","picture":"/data/img/exaltedOrb.webp"},
+        {"name":"exaltedOrb","picture":"/data/img/divineOrb.webp"},
         {"name":"chaosOrb","picture":"/data/img/chaosOrb.webp"},
         {"name":"mirrorOfKalandra","picture":"/data/img/mirror.webp"},
         {"name":"orbOfAlchemy","picture":"/data/img/orbOfAlchemy.webp"},
